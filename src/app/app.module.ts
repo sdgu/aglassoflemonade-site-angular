@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from "@angular/router";
-import { ColorPickerModule } from "angular2-color-picker";
+// import { ColorPickerModule } from "angular2-color-picker";
 
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -24,8 +24,8 @@ import { GpComponent } from './gp/gp.component';
     FormsModule,
     HttpModule,
     RouterModule,
-    AppRoutingModule,
-    ColorPickerModule
+    AppRoutingModule
+    // ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
