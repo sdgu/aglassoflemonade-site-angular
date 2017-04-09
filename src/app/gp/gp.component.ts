@@ -10,6 +10,8 @@ export class GpComponent implements OnInit {
 
   constructor() { }
 
+  color: string;
+
   ngOnInit() {
   }
 
