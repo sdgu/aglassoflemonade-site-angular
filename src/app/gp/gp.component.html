@@ -1,4 +1,29 @@
 <p>
   gp works!
 </p>
-<input [(colorPicker)]="color" [style.background]="color" [value]="color" />
+
+<textarea [(ngModel)]="inputText"></textarea> <br>
+<button (click)="processText()">process</button> 
+
+
+<div id="noSelect">
+<p>
+	<span *ngFor="let word of inputTextArray; let i = index; trackBy: trackByFn"  >
+		<span (click)="processWord($event, i)" [innerHTML]="word | safeHtml" (contextmenu)="additions($event, i)"></span> 
+		<span *ngIf="selectedWordIndex === i">
+			<input myFocus>
+		</span>
+
+	</span>
+</p>
+
+</div>
+
+<p>
+	<span *ngFor="let word of inputTextArray">{{word}} </span>
+
+
+</p>
+<!-- <div class="pickerContainer" [style.background]="color">
+	<input [(colorPicker)]="color" [value]="color" />
+</div> -->

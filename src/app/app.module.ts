@@ -12,12 +12,18 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { GpComponent } from './gp/gp.component';
 
+import { SafeHtmlPipe } from "./safe-html.pipe";
+
+import { FocusDirective } from "./focus.directive";
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    GpComponent
+    GpComponent,
+    SafeHtmlPipe,
+    FocusDirective
   ],
   imports: [
     BrowserModule,

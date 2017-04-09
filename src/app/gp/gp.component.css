@@ -1,0 +1,18 @@
+.pickerContainer
+{
+	display: inline-block;
+	padding: 10px 10px 10px 10px;
+}
+
+.redDelete
+{
+	color: red;
+}
+
+#noSelect span 
+{
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-ms-user-select: none;
+}
