@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import {ColorPickerService} from "angular2-color-picker";
+import {ColorPickerService} from "ngx-color-picker";
 
 @Component({
   selector: 'app-gp',
@@ -10,7 +10,7 @@ export class GpComponent implements OnInit {
 
   constructor() { }
 
-  // color: string;
+  color: string;
 
   ngOnInit() {
   }
