@@ -8,7 +8,7 @@
 
 <div id="noSelect">
 <p>
-	<span *ngFor="let word of inputTextArray; let i = index; trackBy: trackByFn"  >
+	<span *ngFor="let word of inputTextArray; let i = index; trackBy: trackByFunction">
 		<span (click)="processWord($event, i)" [innerHTML]="word | safeHtml" (contextmenu)="additions($event, i)"></span> 
 		<span *ngIf="selectedWordIndex === i">
 			<input myFocus>
