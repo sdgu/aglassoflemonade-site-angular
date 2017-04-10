@@ -5,9 +5,13 @@
 <div>
 	<textarea *ngIf="!processedTextToggle" [(ngModel)]="inputText" cols="45" rows="15"></textarea> <br>
 
+	<button *ngIf="processedTextClicked && !processedTextToggle" (click)="processedTextToggle = !processedTextToggle">hide</button>
+
+	<button *ngIf="processedTextClicked && !processedTextToggle" (click)="processText()">process new text</button> 	
+
 	<button *ngIf="!processedTextToggle && !processedTextClicked" (click)="processText()">process</button> 
 	
-	<button *ngIf="processedTextClicked && !processedTextToggle" (click)="processedTextToggle = !processedTextToggle">hide</button>
+
 	
 </div>
 <div *ngIf="processedTextToggle">
