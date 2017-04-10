@@ -9,9 +9,9 @@
 <div id="noSelect">
 <p>
 	<span *ngFor="let word of inputTextArray; let i = index">
-		<span (click)="processWord($event, i)" [innerHTML]="word | safeHtml" (contextmenu)="additions($event, i)"></span> 
+		<span (click)="processWord($event, i)" [innerHTML]="word | safeHtml" (contextmenu)="showAddContent($event, i)"></span> 
 		<span *ngIf="selectedWordIndex === i">
-			<input myFocus>
+			<input myFocus #myAdd (keyup.enter)="addContent(myAdd.value, i)">
 		</span>
 
 	</span>
