@@ -1,43 +1,66 @@
-<p>
-  gp works!
-</p>
+<h2>
+	Process the text
+</h2>
 
-<textarea [(ngModel)]="inputText"></textarea> <br>
-<button (click)="processText()">process</button> 
+<div>
+	<textarea *ngIf="!processedTextToggle" [(ngModel)]="inputText" cols="45" rows="15"></textarea> <br>
+
+	<button *ngIf="!processedTextToggle && !processedTextClicked" (click)="processText()">process</button> 
+	
+	<button *ngIf="processedTextClicked && !processedTextToggle" (click)="processedTextToggle = !processedTextToggle">hide</button>
+	
+</div>
+<div *ngIf="processedTextToggle">
+	<button (click)="processedTextToggle = !processedTextToggle">show</button>
+</div>
 
 
+<h2>
+	Edit the text
+</h2>
+<hr>
 <div id="noSelect">
-<p>
-	<span *ngFor="let word of inputTextArray; let i = index">
-		<span (click)="processWord($event, i)" [innerHTML]="word | safeHtml" (contextmenu)="showAddContent($event, i)"></span> 
-		<span *ngIf="selectedWordIndex === i">
-			<input myFocus #myAdd (keyup.enter)="addContent(myAdd.value, i)">
+	<p>
+		<span *ngFor="let word of inputTextArray; let i = index">
+			<span (click)="processWord($event, i)" [innerHTML]="word | safeHtml" (contextmenu)="showAddContent($event, i)"></span> 
+			<span *ngIf="selectedWordIndex === i">
+				<input myFocus #myAdd (keyup.enter)="addContent(myAdd.value, i)">
+			</span>
+
 		</span>
-
-	</span>
-</p>
-
+	</p>
 </div>
-
-<p>
+<hr>
+<!-- <p>
 	<span *ngFor="let word of inputTextArray">{{word}} </span>
-</p>
+</p> -->
 
-<div class="pickerContainer" [style.background]="addColor">
-	Add: <input [(colorPicker)]="addColor" [value]="addColor" /> <br>
-</div>
-<div class="pickerContainer" [style.background]="removeColor">
-	Remove: <input [(colorPicker)]="removeColor" [value]="removeColor" /> <br>
-</div>
-<div class="pickerContainer" [style.background]="commentColor">
-	Comment: <input [(colorPicker)]="commentColor" [value]="commentColor" /> <br> 
 
+<h2>
+	Pick your colors
+</h2>
+
+<div class="pickerContainer">
+	<div [style.background]="addColor">
+		<span><a>Add:</a></span> <input [(colorPicker)]="addColor" [value]="addColor" /> 
+	</div>
+	<div [style.background]="removeColor">
+		<span><a>Remove:</a></span> <input [(colorPicker)]="removeColor" [value]="removeColor" /> 
+	</div>
+	<div [style.background]="commentColor">
+		<span><a>Comment:</a></span> <input [(colorPicker)]="commentColor" [value]="commentColor" />  
+
+	</div>
 </div>
 
 <div>
-	<button (click)="convertToBB()">Get BB</button>
+	<button (click)="convertToBB()">get BB</button>
 </div>
 
-<p>
+<h2>
+	Copy / paste the BBCode
+</h2>
+
+<p *ngIf="showBB">
 	{{outputTextBB}}
 </p>

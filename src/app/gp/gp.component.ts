@@ -19,7 +19,10 @@ export class GpComponent implements OnInit {
 
   constructor() { }
 
+  processedTextToggle: boolean;
+  processedTextClicked: boolean;
 
+  showBB: boolean;
   // inputText: string;
   inputText = "this is a test string this is a test string this is a test string ";
   inputTextArray: string[];
@@ -35,13 +38,21 @@ export class GpComponent implements OnInit {
   blueAdd = "<strong style='color:blue;'>";
   closeStrong = "</strong>";
 
+  openComment = "[c]";
+  closeComment = "[/c]";
+
+  openComRe = "\\[c\\]";
+  closeComRe = "\\[\\/c\\]";
+
   BBRemove = "\[color='red'\]\[b\]";
   BBAdd = "\[color='blue'\]\[b\]";
   BBClose = "\[\/b\]\[\/color\]";
+  BBCom = "[color='green'][b]";
 
   BBRemoveRegex = "\\[color='red'\\]\\[b\\]";
   BBAddRegex = "\\[color='blue'\\]\\[b\\]";
   BBCloseRegex = "\\[\\/b\\]\\[\\/color\\]";
+  BBComRe = "\\[color='green'\\]\\[b\\]";
 
   selectedWordIndex: number;
 
@@ -51,40 +62,42 @@ export class GpComponent implements OnInit {
   	this.inputTextArray = this.inputText.split(" ");
   	this.textArrayBB = this.inputTextArray;
   	this.outputTextBB = this.inputTextArray.join(" ");
+  	this.processedTextToggle = true;
+  	this.processedTextClicked = true;
 
   }
 
-  htmlToBB(str: string): string
-  {
+  // htmlToBB(str: string): string
+  // {
 
 
-  	//should split this into two things
-  	let outStr = str.replace(new RegExp(this.redRemove, "g"), this.BBRemove)
-  					.replace(new RegExp(this.blueAdd, "g"), this.BBAdd)
-  					.replace(new RegExp(this.closeStrong, "g"), this.BBClose);
+  // 	//should split this into two things
+  // 	let outStr = str.replace(new RegExp(this.redRemove, "g"), this.BBRemove)
+  // 					.replace(new RegExp(this.blueAdd, "g"), this.BBAdd)
+  // 					.replace(new RegExp(this.closeStrong, "g"), this.BBClose);
 
-  	// alert(outStr);
-  	let reText = this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex + "+\\s" + this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex;
+  // 	// alert(outStr);
+  // 	let reText = this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex + "+\\s" + this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex;
 
 
 
-  	let re = new RegExp(reText);
-    let matches = outStr.match(re);
-    if (matches)
-    {
-    	// alert(matches[1] + " " + matches[2]);
-    	let replacement = this.BBRemove + matches[1] + " " + matches[2] + this.BBClose;
-    	// alert(replacement);
-    	outStr = outStr.replace(re, replacement);
-    }
+  // 	let re = new RegExp(reText);
+  //   let matches = outStr.match(re);
+  //   if (matches)
+  //   {
+  //   	// alert(matches[1] + " " + matches[2]);
+  //   	let replacement = this.BBRemove + matches[1] + " " + matches[2] + this.BBClose;
+  //   	// alert(replacement);
+  //   	outStr = outStr.replace(re, replacement);
+  //   }
     
-    // outStr = outStr.replace(/color='red'/g, "color='" + this.removeColor + "'")
-  		// 		   .replace(/color='blue'/g, "color='" + this.addColor + "'");
+  //   // outStr = outStr.replace(/color='red'/g, "color='" + this.removeColor + "'")
+  // 		// 		   .replace(/color='blue'/g, "color='" + this.addColor + "'");
 
-  	// outStr = 
+  // 	// outStr = 
 
-  	return outStr;
-  }
+  // 	return outStr;
+  // }
 
 
 
@@ -175,8 +188,9 @@ export class GpComponent implements OnInit {
   {
   	let outStr = this.inputTextArray.join(" ").replace(new RegExp(this.redRemove, "g"), this.BBRemove)
   					.replace(new RegExp(this.blueAdd, "g"), this.BBAdd)
-  					.replace(new RegExp(this.closeStrong, "g"), this.BBClose);
-
+  					.replace(new RegExp(this.closeStrong, "g"), this.BBClose)
+  					.replace(new RegExp(this.openComRe, "g"), this.BBCom)
+  					.replace(new RegExp(this.closeComRe, "g"), this.BBClose);
 
   	let reText = this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex + "+\\s" + this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex;
 
@@ -211,15 +225,20 @@ export class GpComponent implements OnInit {
 	
 
     outStr = outStr.replace(/color='red'/g, "color='" + this.removeColor + "'")
-  				   .replace(/color='blue'/g, "color='" + this.addColor + "'");
-
+  				   .replace(/color='blue'/g, "color='" + this.addColor + "'")
+  				   .replace(/color='green'/g, "color='" + this.commentColor + "'");
   	this.outputTextBB = outStr;
+  	this.showBB = true;
 
   }
 
   ngOnInit() 
   {
+  	this.processedTextToggle = false;
+  	this.processedTextClicked = false;
 
+
+  	this.showBB = false;
   }
 
 }
