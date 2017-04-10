@@ -21,9 +21,20 @@
 
 <p>
 	<span *ngFor="let word of inputTextArray">{{word}} </span>
-
-
 </p>
-<!-- <div class="pickerContainer" [style.background]="color">
-	<input [(colorPicker)]="color" [value]="color" />
-</div> -->
+
+<div class="pickerContainer" [style.background]="addColor">
+	Add: <input [(colorPicker)]="addColor" [value]="addColor" /> <br>
+</div>
+<div class="pickerContainer" [style.background]="removeColor">
+	Remove: <input [(colorPicker)]="removeColor" [value]="removeColor" /> <br>
+</div>
+<div class="pickerContainer" [style.background]="commentColor">
+	Comment: <input [(colorPicker)]="commentColor" [value]="commentColor" /> <br> 
+
+</div>
+
+
+<p>
+	{{outputTextBB}}
+</p>
