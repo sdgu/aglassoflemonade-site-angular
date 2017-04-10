@@ -21,9 +21,9 @@ export class GpComponent implements OnInit {
 
 
   // inputText: string;
-  inputText = "this is a test string";
-  // inputTextArray: string[];
-  inputTextArray = this.inputText.split(" ");
+  inputText = "this is a test string this is a test string this is a test string ";
+  inputTextArray: string[];
+  // inputTextArray = this.inputText.split(" ");
   outputTextBB: string;
   textArrayBB: string[];
 
@@ -63,7 +63,7 @@ export class GpComponent implements OnInit {
   					.replace(new RegExp(this.blueAdd, "g"), this.BBAdd)
   					.replace(new RegExp(this.closeStrong, "g"), this.BBClose);
 
-  	alert(outStr);
+  	// alert(outStr);
   	let reText = this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex + "+\\s" + this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex;
 
 
@@ -72,9 +72,9 @@ export class GpComponent implements OnInit {
     let matches = outStr.match(re);
     if (matches)
     {
-    	alert(matches[1] + " " + matches[2]);
+    	// alert(matches[1] + " " + matches[2]);
     	let replacement = this.BBRemove + matches[1] + " " + matches[2] + this.BBClose;
-    	alert(replacement);
+    	// alert(replacement);
     	outStr = outStr.replace(re, replacement);
     }
     
@@ -106,7 +106,7 @@ export class GpComponent implements OnInit {
   			this.inputTextArray.splice(i, 1);
 
   			
-  			this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
+  			// this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
 
   		}
   		else
@@ -116,7 +116,7 @@ export class GpComponent implements OnInit {
 	  		this.inputTextArray[i] = targetWord;
   			
 	  		
-  			this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
+  			// this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
 
   		}
   	}
@@ -131,7 +131,7 @@ export class GpComponent implements OnInit {
   		  	this.inputTextArray[i] = this.redRemove + this.inputTextArray[i] + this.closeStrong;
   			
   		  	
-  			this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
+  			// this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
   		}
   	}
   }
@@ -165,10 +165,56 @@ export class GpComponent implements OnInit {
   	}
   	
   	
-  	this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
+  	// this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
 
   	this.selectedWordIndex = -1;
   	
+  }
+
+  convertToBB(): void
+  {
+  	let outStr = this.inputTextArray.join(" ").replace(new RegExp(this.redRemove, "g"), this.BBRemove)
+  					.replace(new RegExp(this.blueAdd, "g"), this.BBAdd)
+  					.replace(new RegExp(this.closeStrong, "g"), this.BBClose);
+
+
+  	let reText = this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex + "+\\s" + this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex;
+
+  	let re = new RegExp(reText);
+    let matches = outStr.match(re);
+
+
+    if (matches)
+    {
+	    while (matches)
+	    {
+	    	let replacement = this.BBRemove + matches[1] + " " + matches[2] + this.BBClose;
+	    	outStr = outStr.replace(re, replacement);
+	    	matches = outStr.match(re);
+	    }
+	}
+
+  	let reTextAdd = this.BBAddRegex + "(.*?)" + this.BBCloseRegex + "+\\s" + this.BBAddRegex + "(.*?)" + this.BBCloseRegex;
+
+  	let reAdd = new RegExp(reTextAdd);
+    let matchesAdd = outStr.match(reAdd);
+
+    if (matchesAdd)
+    {
+        while (matchesAdd)
+	    {
+	    	let replacement = this.BBAdd + matchesAdd[1] + " " + matchesAdd[2] + this.BBClose;
+	    	outStr = outStr.replace(reAdd, replacement);
+	    	matchesAdd = outStr.match(reAdd);
+	    }	
+    }
+	
+
+    outStr = outStr.replace(/color='red'/g, "color='" + this.removeColor + "'")
+  				   .replace(/color='blue'/g, "color='" + this.addColor + "'");
+
+  	this.outputTextBB = outStr;
+
   }
 
   ngOnInit() 
