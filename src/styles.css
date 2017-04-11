@@ -11,6 +11,7 @@ html, body
 textarea
 {
 	font-family: Ubuntu;
+	border-radius: 4px;
 }
 .pagewrapper
 {

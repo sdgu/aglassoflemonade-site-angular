@@ -30,9 +30,9 @@ export class GpComponent implements OnInit {
   outputTextBB: string;
   textArrayBB: string[];
 
-  addColor = "#0000ff";
-  removeColor = "#ff0000";
-  commentColor = "#00ff00";
+  addColor = "#75A3A3";
+  removeColor = "#FFB7B7";
+  commentColor = "#96D196";
 
   redRemove = "<strong style='color:red;'>";
   blueAdd = "<strong style='color:blue;'>";
@@ -59,6 +59,9 @@ export class GpComponent implements OnInit {
 
   processText(): void
   {
+
+
+  	// need to change \n to <br> and then back
   	this.inputTextArray = this.inputText.split(" ");
   	this.textArrayBB = this.inputTextArray;
   	this.outputTextBB = this.inputTextArray.join(" ");
