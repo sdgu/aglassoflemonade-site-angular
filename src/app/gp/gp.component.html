@@ -15,7 +15,20 @@
 	
 </div>
 <div *ngIf="processedTextToggle">
+	
+		<ul>
+			<li>
+				Left click: remove
+			</li>
+			<li>
+				<strong>Alt</strong> click (or right click): suggest <strong>alt</strong>ernative
+			</li>
+			<li>Control click: undo edits</li>
+		</ul>
+
+	
 	<button (click)="processedTextToggle = !processedTextToggle">show</button>
+
 </div>
 
 

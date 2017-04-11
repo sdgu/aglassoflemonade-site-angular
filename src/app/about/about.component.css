@@ -1,0 +1,11 @@
+.centerContainer
+{
+	text-align: center;
+	
+}
+
+.leftAlignContainer
+{
+	display: inline-block;
+	text-align: left;
+}

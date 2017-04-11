@@ -15,6 +15,7 @@ import { GpComponent } from './gp/gp.component';
 import { SafeHtmlPipe } from "./safe-html.pipe";
 
 import { FocusDirective } from "./focus.directive";
+import { MusingsComponent } from './musings/musings.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FocusDirective } from "./focus.directive";
     AboutComponent,
     GpComponent,
     SafeHtmlPipe,
-    FocusDirective
+    FocusDirective,
+    MusingsComponent
   ],
   imports: [
     BrowserModule,
