@@ -16,7 +16,7 @@ textarea
 .pagewrapper
 {
   margin: -10px 70px -10px 70px;
-  padding: 5px 20px 20px 30px;
+  padding: 5px 30px 20px 30px;
   box-shadow: 0px 0px 7px #999;
   background: #ffffff none repeat scroll 0% 0%;
   /*position: relative;*/
@@ -26,6 +26,7 @@ textarea
 .pagecontent
 {
   display: table;
+  width: 100%;
   /*text-align: center;*/
 }
 

@@ -1,11 +1,15 @@
-<nav>
-	<a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><span>home</span></a>
-	<a routerLink="/about" routerLinkActive="active"><span>about</span></a>
-	<a routerLink="/gp" routerLinkActive="active"><span>gp</span></a>
-</nav>
 
-<h1>
-	A glass of <span id="lcolor">l</span>emonade
-</h1>
+<div class="bottomHRSim">
+	<h1>
+		A glass of <span id="lcolor">l</span>emonade
+	</h1>
+
+	<nav>
+		<a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><span>home</span></a>
+		<a routerLink="/about" routerLinkActive="active"><span>about</span></a>
+		<a routerLink="/gp" routerLinkActive="active"><span>gp</span></a>
+	</nav>
+</div>
+
 
 <router-outlet></router-outlet>
