@@ -1,15 +1,21 @@
+/*element
+{
+	--link-col: #546c78;
+	--link-col: #ffffff;
+}
+*/
 h1
 {
 	color: #ff6666;
 	margin: 5px 0px 30px 0px;
 }
 
-
 #lcolor
 {
 	color: #3D9999;
 }
-nav a {
+nav a 
+{
   padding: 5px 10px;
   text-decoration: none;
   margin-top: 10px;
@@ -18,16 +24,19 @@ nav a {
   border-radius: 4px;
 
 }
-nav a:visited, a:link {
-  color: #607D8B;
+nav a:visited, a:link 
+{
+  color: #546c78;
 }
 
-nav a.active {
+nav a.active 
+{
   color: #3D9999;
   /*background-color: #c4cfd4;*/
   background-color: #D5E3E3;
 
   box-shadow: inset 0 0 3px #7a949f;
+
 }
 
 nav a:hover {
@@ -36,3 +45,10 @@ nav a:hover {
 
   box-shadow: inset 0 0 0px #f2f2f2;
 }
+
+/*nav span
+{
+	text-decoration: none;
+	border-bottom: 1px #546c78 dotted;
+}
+*/

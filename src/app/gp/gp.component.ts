@@ -24,15 +24,19 @@ export class GpComponent implements OnInit {
 
   showBB: boolean;
   // inputText: string;
-  inputText = "this is a test string this is a test string this is a test string ";
+  inputText = "this is a test string \nthis is a test string this is a test string ";
   inputTextArray: string[];
   // inputTextArray = this.inputText.split(" ");
   outputTextBB: string;
   textArrayBB: string[];
 
-  addColor = "#75A3A3";
-  removeColor = "#FFB7B7";
-  commentColor = "#96D196";
+  // addColor = "#3055b0";
+  // removeColor = "#FFB7B7";
+  // commentColor = "#96D196";
+
+  addColor = "#0000ff";
+  removeColor = "#ff0000";
+  commentColor = "#00ff00";
 
   redRemove = "<strong style='color:red;'>";
   blueAdd = "<strong style='color:blue;'>";
@@ -62,6 +66,9 @@ export class GpComponent implements OnInit {
 
 
   	// need to change \n to <br> and then back
+  	this.inputText = this.inputText.replace(/\n/g, "<br>");
+
+
   	this.inputTextArray = this.inputText.split(" ");
   	this.textArrayBB = this.inputTextArray;
   	this.outputTextBB = this.inputTextArray.join(" ");
@@ -189,11 +196,15 @@ export class GpComponent implements OnInit {
 
   convertToBB(): void
   {
-  	let outStr = this.inputTextArray.join(" ").replace(new RegExp(this.redRemove, "g"), this.BBRemove)
+  	let outStr = this.inputTextArray.join(" ")
+  					.replace(new RegExp(this.redRemove, "g"), this.BBRemove)
   					.replace(new RegExp(this.blueAdd, "g"), this.BBAdd)
   					.replace(new RegExp(this.closeStrong, "g"), this.BBClose)
-  					.replace(new RegExp(this.openComRe, "g"), this.BBCom)
-  					.replace(new RegExp(this.closeComRe, "g"), this.BBClose);
+  					.replace(new RegExp(this.openComRe, "g"), this.BBCom + "(Comment: ")
+  					.replace(new RegExp(this.closeComRe, "g"), ")" + this.BBClose)
+  					.replace(/\<br\>/g, "\n");
+
+  	// alert(outStr);
 
   	let reText = this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex + "+\\s" + this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex;
 

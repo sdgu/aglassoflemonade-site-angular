@@ -26,6 +26,7 @@ textarea
 .pagecontent
 {
   display: table;
+  /*text-align: center;*/
 }
 
 .navigation
@@ -37,5 +38,7 @@ textarea
 .content
 {
   display: table-cell;
+  /*display: inline-block;*/
+  /*text-align: left;*/
 }
 
