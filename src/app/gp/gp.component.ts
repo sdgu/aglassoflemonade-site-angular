@@ -91,11 +91,14 @@ export class GpComponent implements OnInit {
 
   // processState:string = "out";
 
+  confStr = 
+  `Are you sure you want to start a new check? This will delete cookies (D:) and you will lose progress on the current check. (Note: this actually uses local storage, not cookies).`
+
   processText(): void
   {
     // this.processState = this.processState === "out" ? "in" : "out";
 
-    if (confirm("Are you sure you want to start a new check? This will delete cookies (D:) and you will lose progress on the current check."))
+    if (confirm(this.confStr))
     {
       localStorage.clear();
           // need to change \n to <br> and then back
