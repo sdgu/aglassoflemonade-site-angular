@@ -3,8 +3,6 @@ import {ColorPickerService} from "ngx-color-picker";
 
 import {SafeHtmlPipe} from "../safe-html.pipe";
 
-import { CookieService } from "angular2-cookie/core";
-
 // import { FocusDirective } from "../focus.directive";
 
 @Component({

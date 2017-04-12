@@ -17,7 +17,6 @@ import { SafeHtmlPipe } from "./safe-html.pipe";
 import { FocusDirective } from "./focus.directive";
 import { MusingsComponent } from './musings/musings.component';
 
-import { CookieService } from "angular2-cookie/services/cookies.service";
 
 
 @NgModule({
@@ -38,7 +37,7 @@ import { CookieService } from "angular2-cookie/services/cookies.service";
     AppRoutingModule,
     ColorPickerModule
   ],
-  providers: [CookieService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
