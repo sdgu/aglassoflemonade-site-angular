@@ -125,10 +125,10 @@ export class GpComponent implements OnInit {
 
   processCookie(): void
   {
-  	this.cookieCounter += 1;
+  	// this.cookieCounter += 1;
   	// if (this.cookieCounter % 10 === S0)
   	{
-  		this.cookieCounter = 0;
+  		// this.cookieCounter = 0;
   		localStorage.setItem(this.inputArrayCookie, this.inputTextArray.join(this.randomJoinString));
   	}
   }
@@ -309,7 +309,7 @@ export class GpComponent implements OnInit {
   	this.processedTextToggle = false;
   	this.processedTextClicked = false;
 
-  	this.cookieCounter = 0;
+  	// this.cookieCounter = 0;
 
   	if (localStorage.getItem("inputText"))
   	{
