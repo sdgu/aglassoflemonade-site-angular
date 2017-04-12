@@ -4,11 +4,15 @@ const http = require("http");
 const bodyParser = require("body-parser");
 const favicon = require("serve-favicon");
 
+const helmet = require("helmet");
+
 // const api = require("./server/routes/api");
 
 // require("./env");
 
 const app = express();
+
+app.use(helmet());
 
 app.use(favicon(path.join(__dirname, "src", "aglassoflemonade.ico")));
 

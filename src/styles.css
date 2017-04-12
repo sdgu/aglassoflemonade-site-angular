@@ -10,7 +10,11 @@ html, body
   /*background: #DBDFE8;*/
   /*background: #F7F7F9;*/
   background: #EFFBFE;
+  background: linear-gradient(#EFFBFE, #C5EBF4) fixed;
+
+
   font-family: 'Ubuntu';
+
 
 
   /*, "times new roman", times, roman, serif;*/
