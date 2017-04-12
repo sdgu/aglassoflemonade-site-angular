@@ -17,7 +17,7 @@ import {SafeHtmlPipe} from "../safe-html.pipe";
 
 export class GpComponent implements OnInit {
 
-  constructor(private cookieService: CookieService) { }
+  constructor() { }
 
 
 
