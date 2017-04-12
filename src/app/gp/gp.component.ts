@@ -51,6 +51,8 @@ export class GpComponent implements OnInit {
   closeComRe = "\\[\\/c\\]";
 
   BBRemove = "\[color='red'\]\[b\]";
+  BBRemoveClose = "\[\/s\]\[\/b\]\[\/color\]"
+
   BBAdd = "\[color='blue'\]\[b\]";
   BBClose = "\[\/b\]\[\/color\]";
   BBCom = "[color='green'][b]";
@@ -241,7 +243,7 @@ export class GpComponent implements OnInit {
   					.replace(new RegExp(this.closeStrong, "g"), this.BBClose)
   					.replace(new RegExp(this.openComRe, "g"), this.BBCom + "(Comment: ")
   					.replace(new RegExp(this.closeComRe, "g"), ")" + this.BBClose)
-  					.replace(/\<br\>/g, "\n");
+  					.replace(/ \<br\> /g, "\n");
 
   	// alert(outStr);
 
