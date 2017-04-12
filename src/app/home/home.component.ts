@@ -9,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
 
-	title = "A glass of lemonade";
+  title = "A glass of lemonade";
 
-	  constructor() { }
+  constructor() { }
 
-	  ngOnInit() {
-	  }
+  ngOnInit() {
+  }
 
 }
