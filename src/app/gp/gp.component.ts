@@ -74,13 +74,13 @@ export class GpComponent implements OnInit {
   BBClose = "\[\/b\]\[\/color\]";
   BBCom = "[color='green'][b]";
 
-  BBRemoveRegex = "\\[color='red'\\]\\[b\\]\\[s\\]";
+  BBRemoveRegex = "\\[color=\\'red\\'\\]\\[b\\]\\[s\\]";
   BBCloseRegexRemove = "\\[\\/s\\]\\[\\/b\\]\\[\\/color\\]"
 
 
-  BBAddRegex = "\\[color='blue'\\]\\[b\\]";
+  BBAddRegex = "\\[color=\\'blue\\'\\]\\[b\\]";
   BBCloseRegex = "\\[\\/b\\]\\[\\/color\\]";
-  BBComRe = "\\[color='green'\\]\\[b\\]";
+  BBComRe = "\\[color=\\'green\\'\\]\\[b\\]";
 
   selectedWordIndex: number;
 
@@ -286,28 +286,49 @@ export class GpComponent implements OnInit {
 	    	outStr = outStr.replace(re, replacement);
 	    	matches = outStr.match(re);
 	    }
-	}
+	  }
 
-  	let reTextAdd = this.BBAddRegex + "(.*?)" + this.BBCloseRegex + "+\\s" + this.BBAddRegex + "(.*?)" + this.BBCloseRegex;
+    let jib1 = ")(*&^";
+    let jib2 = "%$#@!";
+    outStr = outStr.replace(new RegExp(this.BBRemoveRegex, "g"), jib1)
+                   .replace(new RegExp(this.BBCloseRegexRemove, "g"), jib2);
+
+
+    let comp = "^(?!.*\[color='red'\]).*$";
+    let simp = "(.*?)";
+  	let reTextAdd = this.BBAddRegex + simp + this.BBCloseRegex + "+\\s" + this.BBAddRegex + simp + this.BBCloseRegex;
 
   	let reAdd = new RegExp(reTextAdd);
     let matchesAdd = outStr.match(reAdd);
+    // alert(matchesAdd[1] + "\n" + matchesAdd[2]);
 
     if (matchesAdd)
     {
-        while (matchesAdd)
+
+      while (matchesAdd)
 	    {
-	    	let replacement = this.BBAdd + matchesAdd[1] + " " + matchesAdd[2] + this.BBClose;
-	    	outStr = outStr.replace(reAdd, replacement);
-	    	matchesAdd = outStr.match(reAdd);
+        let fir = matchesAdd[1];
+        let sec = matchesAdd[2];
+        // if (fir.indexOf(this.BBAdd) > -1 || sec.indexOf(this.BBAdd))
+        {
+          let replacement = this.BBAdd + matchesAdd[1] + " " + matchesAdd[2] + this.BBClose;
+          outStr = outStr.replace(reAdd, replacement);
+          matchesAdd = outStr.match(reAdd);        
+        }
+        // alert(matchesAdd[1] + "\n" + matchesAdd[2]);
+
 	    }	
     }
-	
+    let jib1re = "\\)\\(\\*\\&\\^";
+    let jib2re = "\\%\\$\\#\\@\\!"
+	  outStr = outStr.replace(new RegExp(jib1re, "g"), this.BBRemove)
+                   .replace(new RegExp(jib2re, "g"), this.BBRemoveClose);
 
     outStr = outStr.replace(/color='red'/g, "color='" + this.removeColor + "'")
   				   .replace(/color='blue'/g, "color='" + this.addColor + "'")
   				   .replace(/color='green'/g, "color='" + this.commentColor + "'");
-  	this.outputTextBB = outStr;
+  	
+    this.outputTextBB = outStr;
   	this.showBB = true;
 
   }
