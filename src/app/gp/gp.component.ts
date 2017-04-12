@@ -54,7 +54,10 @@ export class GpComponent implements OnInit {
   removeColor = "#ff0000";
   commentColor = "#00ff00";
 
-  redRemove = "<strong style='color:red;'>";
+  redRemove = "<strong style='color:red;'><del>";
+  closeRemove = "</del></strong>";
+
+
   blueAdd = "<strong style='color:blue;'>";
   closeStrong = "</strong>";
 
@@ -64,14 +67,17 @@ export class GpComponent implements OnInit {
   openComRe = "\\[c\\]";
   closeComRe = "\\[\\/c\\]";
 
-  BBRemove = "\[color='red'\]\[b\]";
+  BBRemove = "\[color='red'\]\[b\][s]";
   BBRemoveClose = "\[\/s\]\[\/b\]\[\/color\]"
 
   BBAdd = "\[color='blue'\]\[b\]";
   BBClose = "\[\/b\]\[\/color\]";
   BBCom = "[color='green'][b]";
 
-  BBRemoveRegex = "\\[color='red'\\]\\[b\\]";
+  BBRemoveRegex = "\\[color='red'\\]\\[b\\]\\[s\\]";
+  BBCloseRegexRemove = "\\[\\/s\\]\\[\\/b\\]\\[\\/color\\]"
+
+
   BBAddRegex = "\\[color='blue'\\]\\[b\\]";
   BBCloseRegex = "\\[\\/b\\]\\[\\/color\\]";
   BBComRe = "\\[color='green'\\]\\[b\\]";
@@ -193,7 +199,7 @@ export class GpComponent implements OnInit {
   		else
   		{
   	  	targetWord = targetWord.replace(new RegExp(this.redRemove, "g"), "");
-	  		targetWord = targetWord.replace(new RegExp(this.closeStrong, "g"), "");
+	  		targetWord = targetWord.replace(new RegExp(this.closeRemove, "g"), "");
 	  		this.inputTextArray[i] = targetWord;
   			this.processCookie();
 	  		
@@ -209,7 +215,7 @@ export class GpComponent implements OnInit {
   		}
   		else
   		{
-  		  	this.inputTextArray[i] = this.redRemove + this.inputTextArray[i] + this.closeStrong;
+  		  	this.inputTextArray[i] = this.redRemove + this.inputTextArray[i] + this.closeRemove;
   			  this.processCookie();
   		  	
   			// this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
@@ -254,8 +260,10 @@ export class GpComponent implements OnInit {
 
   convertToBB(): void
   {
+      // let outStr = this.inputTextArray.join(" ");
   	let outStr = this.inputTextArray.join(" ")
   					.replace(new RegExp(this.redRemove, "g"), this.BBRemove)
+            .replace(new RegExp(this.closeRemove, "g"), this.BBRemoveClose)
   					.replace(new RegExp(this.blueAdd, "g"), this.BBAdd)
   					.replace(new RegExp(this.closeStrong, "g"), this.BBClose)
   					.replace(new RegExp(this.openComRe, "g"), this.BBCom + "(Comment: ")
@@ -264,7 +272,7 @@ export class GpComponent implements OnInit {
 
   	// alert(outStr);
 
-  	let reText = this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex + "+\\s" + this.BBRemoveRegex + "(.*?)" + this.BBCloseRegex;
+  	let reText = this.BBRemoveRegex + "(.*?)" + this.BBCloseRegexRemove + "+\\s" + this.BBRemoveRegex + "(.*?)" + this.BBCloseRegexRemove;
 
   	let re = new RegExp(reText);
     let matches = outStr.match(re);
@@ -274,7 +282,7 @@ export class GpComponent implements OnInit {
     {
 	    while (matches)
 	    {
-	    	let replacement = this.BBRemove + matches[1] + " " + matches[2] + this.BBClose;
+	    	let replacement = this.BBRemove + matches[1] + " " + matches[2] + this.BBRemoveClose;
 	    	outStr = outStr.replace(re, replacement);
 	    	matches = outStr.match(re);
 	    }
