@@ -86,6 +86,7 @@ export class GpComponent implements OnInit {
       this.processedTextClicked = true;
 
       localStorage.setItem(this.inputCookie, this.inputText);
+      this.processCookie();
     }
 
   	
