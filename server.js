@@ -29,6 +29,10 @@ app.get("*", (req, res) =>
 	{
 		res.send(req.body);
 	}
+	else if (req.url.indexOf(".ico") > -1)
+	{
+		res.sendFile(__dirname + "/src/aglassoflemonade.ico");
+	}
 	else
 	{
 		res.sendFile(path.join(__dirname, "dist/index.html"));
