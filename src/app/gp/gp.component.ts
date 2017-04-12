@@ -1,4 +1,4 @@
-import { Component, OnInit, Directive } from '@angular/core';
+import { Component, OnInit, Directive, trigger, state, style, transition, animate } from '@angular/core';
 import {ColorPickerService} from "ngx-color-picker";
 
 import {SafeHtmlPipe} from "../safe-html.pipe";
@@ -9,6 +9,20 @@ import {SafeHtmlPipe} from "../safe-html.pipe";
   selector: 'app-gp',
   templateUrl: './gp.component.html',
   styleUrls: ['./gp.component.css']
+  // animations: [
+  //   trigger("slideInOut", [
+  //     state("in", style(
+  //     {
+  //       transform: "translate3d(0,0,0)"
+  //     })),
+  //     state("out", style(
+  //     {
+  //       transform: "translate3D(0, 100%, 0)"
+  //     })),
+  //     transition("in => out", animate("400ms ease-in-out")),
+  //     transition("out => in", animate("400ms ease-in-out"))
+  //     ]),
+  //   ]
 
 })
 
@@ -69,8 +83,11 @@ export class GpComponent implements OnInit {
   inputArrayCookie = "inputArrayCookie";
   cookieCounter: number;
 
+  // processState:string = "out";
+
   processText(): void
   {
+    // this.processState = this.processState === "out" ? "in" : "out";
 
     if (confirm("Are you sure you want to start a new check? This will delete cookies (D:) and you will lose progress on the current check."))
     {

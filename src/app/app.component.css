@@ -6,7 +6,7 @@
 */
 .bottomHRSim
 {
-	border-bottom: dotted #3D9999 4px;
+	border: dotted #3D9999 4px;
 	border-style: none none dotted none;
 
 	padding: 0px 0px 15px 0px;

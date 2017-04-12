@@ -3,7 +3,7 @@ button
 {
   padding: 5px 10px;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 20px;
 /*  display: inline-block;*/
   background-color: #e6e6e6;
   border-radius: 4px;
@@ -28,13 +28,30 @@ h2
 	display: inline-block;
 
 }
-
+h3
+{
+	margin: 0px 0px -10px 0px;
+	color: #546c78;
+}
+ul, li
+{
+	color: #546c78;
+}
 hr
 {
-	border-top: dotted #3D9999 4px;
+	border-top: dotted #3D9999 2px;
 	border-style: dotted none none none;
 }
 
+#instructions
+{
+	margin: -25px 0px -20px 0px;
+}
+
+.editAreas
+{
+	margin: 0px 25px 0px 25px;
+}
 .pickerContainer
 {
 	/*display: inline-block;*/
@@ -53,6 +70,7 @@ hr
 
 	display: table-cell;
 	padding: 10px 10px 10px 10px;
+	color: #546c78;
 
 }
 
@@ -61,7 +79,7 @@ hr
 	background-color: white;
 	padding: 4px 4px 4px 4px;
 	border-radius: 4px;
-
+	
 
 }
 
@@ -70,7 +88,7 @@ hr
 	display: table-cell;
 	margin-right: 10px;
 	border-radius: 4px;
-
+	color: #546c78;
 
 
 }
@@ -101,4 +119,5 @@ hr
 .outputBB
 {
 	white-space: pre-line;
+	margin: -25px 0px 0px 0px;
 }
