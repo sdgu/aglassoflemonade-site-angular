@@ -3,6 +3,8 @@ import {ColorPickerService} from "ngx-color-picker";
 
 import {SafeHtmlPipe} from "../safe-html.pipe";
 
+import { CookieService } from "angular2-cookie/core";
+
 // import { FocusDirective } from "../focus.directive";
 
 @Component({
@@ -17,14 +19,16 @@ import {SafeHtmlPipe} from "../safe-html.pipe";
 
 export class GpComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
+
+
 
   processedTextToggle: boolean;
   processedTextClicked: boolean;
 
   showBB: boolean;
   // inputText: string;
-  inputText = "this is a test string \nthis is a test string this is a test string ";
+  inputText: string; // = "this is a test string \nthis is a test string this is a test string ";
   inputTextArray: string[];
   // inputTextArray = this.inputText.split(" ");
   outputTextBB: string;
@@ -61,20 +65,54 @@ export class GpComponent implements OnInit {
   selectedWordIndex: number;
 
 
+  inputCookie = "inputText";
+  inputArrayCookie = "inputArrayCookie";
+  cookieCounter: number;
+
   processText(): void
   {
 
+    if (confirm("Are you sure you want to start a new check? This will delete cookies (D:) and you will lose progress on the current check."))
+    {
+      localStorage.clear();
+          // need to change \n to <br> and then back
+      this.inputText = this.inputText.replace(/\n/g, " <br> ");
 
-  	// need to change \n to <br> and then back
-  	this.inputText = this.inputText.replace(/\n/g, "<br>");
+
+      this.inputTextArray = this.inputText.split(" ");
+      this.textArrayBB = this.inputTextArray;
+      this.outputTextBB = this.inputTextArray.join(" ");
+      this.processedTextToggle = true;
+      this.processedTextClicked = true;
+
+      localStorage.setItem(this.inputCookie, this.inputText);
+    }
+
+  	
+
+  }
 
 
-  	this.inputTextArray = this.inputText.split(" ");
-  	this.textArrayBB = this.inputTextArray;
-  	this.outputTextBB = this.inputTextArray.join(" ");
-  	this.processedTextToggle = true;
-  	this.processedTextClicked = true;
+  randomJoinString = "\!\@\#\$\%";
 
+  // processTextNew(): void
+  // {
+  // 	if (confirm("Are you sure you want to start a new check? This will delete cookies (D:) and you will lose progress on the current check."))
+  // 	{
+  // 		this.cookieService.removeAll();
+  // 		this.processText();
+  // 	}
+
+  // }
+
+  processCookie(): void
+  {
+  	this.cookieCounter += 1;
+  	// if (this.cookieCounter % 10 === S0)
+  	{
+  		this.cookieCounter = 0;
+  		localStorage.setItem(this.inputArrayCookie, this.inputTextArray.join(this.randomJoinString));
+  	}
   }
 
   // htmlToBB(str: string): string
@@ -113,6 +151,8 @@ export class GpComponent implements OnInit {
 
   processWord(e: any, i: number): void
   {
+
+  	
   	let targetWord = this.inputTextArray[i];
 
 
@@ -130,14 +170,14 @@ export class GpComponent implements OnInit {
 
   			
   			// this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
-
+        this.processCookie();
   		}
   		else
   		{
-  	  		targetWord = targetWord.replace(new RegExp(this.redRemove, "g"), "");
+  	  	targetWord = targetWord.replace(new RegExp(this.redRemove, "g"), "");
 	  		targetWord = targetWord.replace(new RegExp(this.closeStrong, "g"), "");
 	  		this.inputTextArray[i] = targetWord;
-  			
+  			this.processCookie();
 	  		
   			// this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
 
@@ -152,7 +192,7 @@ export class GpComponent implements OnInit {
   		else
   		{
   		  	this.inputTextArray[i] = this.redRemove + this.inputTextArray[i] + this.closeStrong;
-  			
+  			  this.processCookie();
   		  	
   			// this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
   		}
@@ -168,7 +208,7 @@ export class GpComponent implements OnInit {
 
   addContent(value: string, i: number): void
   {
-
+  	this.processCookie();
   	let valueArr = value.split(" ");
 
   	if (valueArr[0] !== "")
@@ -189,7 +229,7 @@ export class GpComponent implements OnInit {
   	
   	
   	// this.outputTextBB = this.htmlToBB(this.textArrayBB.join(" "));
-
+    this.processCookie();
   	this.selectedWordIndex = -1;
   	
   }
@@ -251,6 +291,17 @@ export class GpComponent implements OnInit {
   	this.processedTextToggle = false;
   	this.processedTextClicked = false;
 
+  	this.cookieCounter = 0;
+
+  	if (localStorage.getItem("inputText"))
+  	{
+  		this.inputText = localStorage.getItem("inputText").replace(/ \<br\> /g, "\n");
+  	}
+
+  	if (localStorage.getItem(this.inputArrayCookie))
+  	{
+  		this.inputTextArray = localStorage.getItem(this.inputArrayCookie).split(this.randomJoinString);
+  	}
 
   	this.showBB = false;
   }
