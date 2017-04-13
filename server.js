@@ -14,7 +14,7 @@ const app = express();
 
 app.use(helmet());
 
-app.use(favicon(path.join(__dirname, "src", "aglassoflemonade.ico")));
+app.use(favicon(path.join(__dirname, "src/assets", "faviconglass.png")));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -29,9 +29,9 @@ app.get("*", (req, res) =>
 	{
 		res.send(req.body);
 	}
-	else if (req.url.indexOf(".ico") > -1)
+	else if (req.url.indexOf(".png") > -1)
 	{
-		res.sendFile(__dirname + "/src/aglassoflemonade.ico");
+		res.sendFile(__dirname + "/src/assets/faviconglass.png");
 	}
 	else
 	{

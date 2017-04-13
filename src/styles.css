@@ -9,8 +9,10 @@ html, body
   /*background: #D5E3E3;*/
   /*background: #DBDFE8;*/
   /*background: #F7F7F9;*/
-  background: #EFFBFE;
+  /*background: #EFFBFE;*/
+  /*background-image: url("/src/assets/newwedgerecol.png");*/
   background: linear-gradient(#EFFBFE, #C5EBF4) fixed;
+
 
 
   font-family: 'Ubuntu';
