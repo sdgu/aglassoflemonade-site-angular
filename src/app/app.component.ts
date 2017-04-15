@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { AuthService } from "./auth.service";
+
 @Component(
 {
   selector: 'app-root',
@@ -9,6 +11,7 @@ import { Component } from '@angular/core';
 export class AppComponent 
 {
   
+  constructor(private authService: AuthService) {}
 
   title = "A glass of lemonade";
 }
