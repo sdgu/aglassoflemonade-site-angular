@@ -5,14 +5,15 @@ const bodyParser = require("body-parser");
 const favicon = require("serve-favicon");
 
 const helmet = require("helmet");
-
-// const api = require("./server/routes/api");
+const cors = require("cors");
+const api = require("./server/routes/api");
 
 // require("./env");
 
 const app = express();
 
 app.use(helmet());
+app.use(cors());
 
 app.use(favicon(path.join(__dirname, "src/assets", "faviconglass.png")));
 
@@ -21,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname, "/dist")));
 
-// app.use("/api", api);
+app.use("/api", api);
 
 app.get("*", (req, res) =>
 {

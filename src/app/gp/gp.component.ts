@@ -351,6 +351,12 @@ export class GpComponent implements OnInit
             .replace(/color='blue'/g, "color='" + this.addColor + "'")
             .replace(/color='green'/g, "color='" + this.commentColor + "'");
 
+        outStr = "[color='" + this.addColor + "'][b]Additions[/b][/color]\n" +
+                 "[color='" + this.removeColor + "'][b]Removals[/b][/color]\n" +
+                 "[color='" + this.commentColor + "'][b]Comments[/b][/color]\n" +
+                 outStr;
+
+
         this.outputTextBB = outStr;
         this.showBB = true;
 
