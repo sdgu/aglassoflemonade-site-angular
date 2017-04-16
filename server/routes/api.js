@@ -2,9 +2,6 @@ const express = require("express");
 const router = express.Router();
 const app = express();
 const jwt = require("express-jwt");
-const cors = require("cors");
-
-app.use(cors());
 
 require("../../env");
 
@@ -17,7 +14,7 @@ const authCheck = jwt(
 
 router.get("/test", (req, res) =>
 {
-	let test = ["hi", "hello there"];
+	let test = ["hi"];
 	res.json(test);
 })
 

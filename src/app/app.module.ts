@@ -17,9 +17,6 @@ import { SafeHtmlPipe } from "./safe-html.pipe";
 import { FocusDirective } from "./focus.directive";
 import { MusingsComponent } from './musings/musings.component';
 
-import { AuthService } from "./auth.service";
-import { TestService } from "./test.service";
-import { AuthGuardService } from "./auth-guard.service";
 
 
 @NgModule({
@@ -40,7 +37,7 @@ import { AuthGuardService } from "./auth-guard.service";
     AppRoutingModule,
     ColorPickerModule
   ],
-  providers: [AuthService, TestService, AuthGuardService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

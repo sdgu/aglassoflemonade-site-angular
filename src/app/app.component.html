@@ -13,12 +13,6 @@
 		<a routerLink="/about" routerLinkActive="active"><span>about</span></a>
 		<a routerLink="/musings" routerLinkActive="active"><span>musings</span></a>
 		<a routerLink="/gp" routerLinkActive="active"><span>gp</span></a>
-		<a (click)=authService.login() *ngIf="!authService.loggedIn()">Log In</a>
-		<a (click)=authService.logout() *ngIf="authService.loggedIn()">Log Out</a>
-		<a routerLink="/musings" *ngIf="authService.loggedIn()" routerLinkActive="active">private musings</a>
-
-
-
 	</nav>
 	
 
