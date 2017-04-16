@@ -6,7 +6,7 @@ const favicon = require("serve-favicon");
 
 const helmet = require("helmet");
 const cors = require("cors");
-const api = require("./server/routes/api");
+// const api = require("./server/routes/api");
 
 // require("./env");
 
@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname, "/dist")));
 
-app.use("/api", api);
+// app.use("/api", api);
 
 app.get("*", (req, res) =>
 {
