@@ -283,6 +283,10 @@ export class GpComponent implements OnInit
 
     convertToBB(): void
     {
+
+        localStorage.setItem("addcolor", this.addColor);
+        localStorage.setItem("remcolor", this.removeColor);
+        localStorage.setItem("comcolor", this.commentColor);
         // let outStr = this.inputTextArray.join(" ");
         let outStr = this.inputTextArray.join(" ")
             .replace(new RegExp(this.redRemove, "g"), this.BBRemove)
@@ -354,7 +358,9 @@ export class GpComponent implements OnInit
         outStr = "[color='" + this.addColor + "'][b]Additions[/b][/color]\n" +
                  "[color='" + this.removeColor + "'][b]Removals[/b][/color]\n" +
                  "[color='" + this.commentColor + "'][b]Comments[/b][/color]\n" +
-                 outStr;
+                 "[hide]\n" +
+                 outStr +
+                 "\n[/hide]";
 
 
         this.outputTextBB = outStr;
@@ -378,6 +384,21 @@ export class GpComponent implements OnInit
         {
             this.inputTextArray = localStorage.getItem(this.inputArrayCookie).split(this.randomJoinString);
         }
+
+        if (localStorage.getItem("addcolor"))
+        {
+            this.addColor = localStorage.getItem("addcolor");
+        }
+        if (localStorage.getItem("remcolor"))
+        {
+            this.removeColor = localStorage.getItem("remcolor");
+        }
+        
+        if (localStorage.getItem("comcolor"))
+        {
+            this.commentColor = localStorage.getItem("comcolor");
+        }
+ 
 
         this.showBB = false;
     }
