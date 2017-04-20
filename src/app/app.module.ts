@@ -11,13 +11,22 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { GpComponent } from './gp/gp.component';
+import { MusingsComponent } from './musings/musings.component';
+import { LoginComponent } from './login/login.component';
+import { TestComponent } from './test/test.component';
 
 import { SafeHtmlPipe } from "./safe-html.pipe";
 
 import { FocusDirective } from "./focus.directive";
-import { MusingsComponent } from './musings/musings.component';
+
 
 import { AuthHttp, AuthConfig } from "angular2-jwt";
+
+
+import { AuthService } from "./auth.service";
+import { AuthGuardService } from "./auth-guard.service";
+
+import { TestService } from "./test.service";
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -36,7 +45,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     GpComponent,
     SafeHtmlPipe,
     FocusDirective,
-    MusingsComponent
+    MusingsComponent,
+    LoginComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +62,10 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
       deps: [Http, RequestOptions]
-    }
+    },
+    AuthService,
+    AuthGuardService,
+    TestService
   ],
   bootstrap: [AppComponent]
 })
