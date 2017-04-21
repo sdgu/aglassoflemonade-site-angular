@@ -15,11 +15,14 @@ class Test
 export class TestComponent implements OnInit {
 
 	tests: Test[];
+	prof: string;
+
 
   constructor(private testService: TestService, public authService: AuthService) { }
 
   ngOnInit() 
   {
+  	this.prof = localStorage.getItem("profile");
   	this.testService.getTest()
   					.subscribe(tests =>
   					{
