@@ -15,4 +15,4 @@ I use [Auth0](https://auth0.com/) for authentication.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
-Trying out gitlab
+NVM
