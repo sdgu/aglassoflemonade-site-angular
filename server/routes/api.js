@@ -3,7 +3,7 @@ const router = express.Router();
 const app = express();
 const jwt = require("express-jwt");
 
-require("../../env");
+// require("../../env");
 
 const authCheck = jwt(
 {
