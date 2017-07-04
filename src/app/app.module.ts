@@ -7,7 +7,21 @@ import { ColorPickerModule } from "ngx-color-picker";
 
 import { AppRoutingModule } from "./app-routing.module";
 
+
+import { MainComponent } from "./layouts/main.component";
+import { FfxivComponent } from "./layouts/ffxiv.component";
+
 import { AppComponent } from './app.component';
+
+import { HomeComponent } from './main/home/home.component';
+import { AboutComponent } from './main/about/about.component';
+import { GpComponent } from './main/gp/gp.component';
+
+import { FfxivHomeComponent } from "./ffxiv/ffxiv-home/ffxiv-home.component";
+import { FfxivTestComponent } from "./ffxiv/ffxiv-test/ffxiv-test.component";
+
+import { NotFoundComponent } from "./not-found/not-found.component";
+
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { GpComponent } from './gp/gp.component';
@@ -15,9 +29,13 @@ import { MusingsComponent } from './musings/musings.component';
 import { LoginComponent } from './login/login.component';
 import { TestComponent } from './test/test.component';
 
+
 import { SafeHtmlPipe } from "./safe-html.pipe";
 
 import { FocusDirective } from "./focus.directive";
+
+import { MusingsComponent } from './main/musings/musings.component';
+
 
 
 import { AuthHttp, AuthConfig } from "angular2-jwt";
@@ -39,6 +57,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 
 @NgModule({
   declarations: [
+    MainComponent,
+    FfxivComponent,
     AppComponent,
     HomeComponent,
     AboutComponent,
@@ -46,8 +66,14 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     SafeHtmlPipe,
     FocusDirective,
     MusingsComponent,
+
+    FfxivHomeComponent,
+    FfxivTestComponent,
+    NotFoundComponent
+
     LoginComponent,
     TestComponent
+
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,7 @@ import
 {
     SafeHtmlPipe
 }
-from "../safe-html.pipe";
+from "../../safe-html.pipe";
 
 // import { FocusDirective } from "../focus.directive";
 
