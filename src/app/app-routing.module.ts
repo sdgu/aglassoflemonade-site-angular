@@ -14,6 +14,10 @@ import { FFXIV_ROUTES } from "./ffxiv/ffxiv.routes";
 
 import { NotFoundComponent } from "./not-found/not-found.component";
 
+import { LoginComponent } from "./login/login.component";
+import { TestComponent } from "./test/test.component";
+
+import { AuthGuardService } from "./auth-guard.service";
 const routes: Routes = [
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: '', redirectTo: "/", pathMatch: "full" }, // component: HomeComponent },
@@ -21,7 +25,8 @@ const routes: Routes = [
   // { path: "gp", component: GpComponent },
   // { path: "musings", component: MusingsComponent}
   { path: "404", component: NotFoundComponent },
-
+  { path: "login", component: LoginComponent },
+  { path: "test", component: TestComponent, canActivate: [AuthGuardService]},
 
   { path: "", component: MainComponent, children: MAIN_ROUTES },
   { path: "ffxiv", component: FfxivComponent, children: FFXIV_ROUTES },

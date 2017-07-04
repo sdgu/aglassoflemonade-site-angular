@@ -22,10 +22,8 @@ import { FfxivTestComponent } from "./ffxiv/ffxiv-test/ffxiv-test.component";
 
 import { NotFoundComponent } from "./not-found/not-found.component";
 
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { GpComponent } from './gp/gp.component';
-import { MusingsComponent } from './musings/musings.component';
+
+import { MusingsComponent } from './main/musings/musings.component';
 import { LoginComponent } from './login/login.component';
 import { TestComponent } from './test/test.component';
 
@@ -34,7 +32,6 @@ import { SafeHtmlPipe } from "./safe-html.pipe";
 
 import { FocusDirective } from "./focus.directive";
 
-import { MusingsComponent } from './main/musings/musings.component';
 
 
 
@@ -69,7 +66,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 
     FfxivHomeComponent,
     FfxivTestComponent,
-    NotFoundComponent
+    NotFoundComponent,
 
     LoginComponent,
     TestComponent
