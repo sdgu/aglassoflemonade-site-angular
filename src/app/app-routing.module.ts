@@ -22,6 +22,7 @@ const routes: Routes = [
   // { path: "musings", component: MusingsComponent}
   { path: "404", component: NotFoundComponent },
 
+
   { path: "", component: MainComponent, children: MAIN_ROUTES },
   { path: "ffxiv", component: FfxivComponent, children: FFXIV_ROUTES },
   
