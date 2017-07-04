@@ -8,7 +8,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const api = require("./server/routes/api");
 
-require("./env");
+// require("./env");
 
 const app = express();
 
