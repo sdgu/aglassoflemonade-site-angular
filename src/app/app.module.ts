@@ -22,6 +22,9 @@ import { FfxivTestComponent } from "./ffxiv/ffxiv-test/ffxiv-test.component";
 
 import { NotFoundComponent } from "./not-found/not-found.component";
 
+import { FfxivGuidesComponent } from "./ffxiv/ffxiv-layouts/ffxiv-guides.component";
+
+import { TestGuideComponent } from "./ffxiv/ffxiv-guides/test-guide/test-guide.component";
 
 import { MusingsComponent } from './main/musings/musings.component';
 import { LoginComponent } from './login/login.component';
@@ -69,7 +72,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     NotFoundComponent,
 
     LoginComponent,
-    TestComponent
+    TestComponent,
+    FfxivGuidesComponent,
+    TestGuideComponent
 
   ],
   imports: [
