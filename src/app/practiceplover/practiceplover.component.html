@@ -1,0 +1,52 @@
+<h1>Practice Plover</h1>
+
+<div class="row">
+
+
+	<div class="col" id="options">
+
+		Lesson 1 <br>
+		<input type="checkbox" name="les1-1" [(ngModel)]="les.w1" (change)="activateLists()"> One-syllable words <br>
+		<input type="checkbox" name="les1-2" [(ngModel)]="les.w2" (change)="activateLists()"> Consonant clusters <br>
+		Lesson 2 <br>
+		<input type="checkbox" name="les2-1" [(ngModel)]="les.t1" (change)="activateLists()"> TRUFT <br>
+		<input type="checkbox" name="les2-2" [(ngModel)]="les.t2" (change)="activateLists()"> Dropping unstressed vowels <br>
+		<input type="checkbox" name="les2-3" [(ngModel)]="les.t3" (change)="activateLists()"> Inversion <br>
+		Lesson 3 <br>
+		<input type="checkbox" name="les3a-1" [(ngModel)]="les.tha1" (change)="activateLists()"> The fifth vowel key <br>
+		<input type="checkbox" name="les3a-2" [(ngModel)]="les.tha2" (change)="activateLists()"> Long vowel chords <br>
+		<input type="checkbox" name="les3a-3" [(ngModel)]="les.tha3" (change)="activateLists()"> Diphthong chords <br>
+		<input type="checkbox" name="les3a-4" [(ngModel)]="les.tha4" (change)="activateLists()"> Vowel disambiguator chords <br>
+		<input type="checkbox" name="les3b" [(ngModel)]="les.thb" (change)="activateLists()"> k, d, f, l, g, b, z, v <br>
+		<input type="checkbox" name="les3c" [(ngModel)]="les.thc" (change)="activateLists()"> n, m, j, y <br>
+		<input type="checkbox" name="les3c-2" [(ngModel)]="les.thc2" (change)="activateLists()"> Previous lessons <br>
+		<input type="checkbox" name="les3d" [(ngModel)]="les.thd" (change)="activateLists()"> th, ch, sh, ng <br>
+		<input type="checkbox" name="les3d-2" [(ngModel)]="les.thd2" (change)="activateLists()"> Previous lessons <br>
+		<input type="checkbox" name="les3e" [(ngModel)]="les.thde" (change)="activateLists()"> Common compound clusters <br>
+		<input type="checkbox" name="les3e-2" [(ngModel)]="les.the2" (change)="activateLists()"> Previous lessons <br>
+		<br>
+		Max number of words: <input [(ngModel)]="numWords" size=5 (keyup)="cutList($event)"> <br>
+		<br>
+
+		<button (click)="selectAll()">Select all</button>
+		<button (click)="clearAll()">Clear all</button>
+
+		<!-- ["w1", "w2", "t1", "t2", "t3", "tha1", "tha2", "tha3", "tha4", "thb", "thc", "thc2", "thd", "thd2", "the", "the2"] -->
+	</div>
+
+	<div class="col">
+
+		<!-- <span *ngFor="let word of testWords; let i = index">
+			<span class="big">{{word}}</span>
+		</span> -->
+		<span>{{wordsLeft}} words left</span> <br>
+		<span class="big">{{testWords[0]}}</span> <br>
+
+
+		<input class="bigInput" [(ngModel)]="typedWord" #entry (keyup)="onKeyUp($event)">
+
+		<!-- <p> -->
+		<!-- <span [innerText]="theWord"></span> -->
+		<!-- </p> -->
+	</div>
+</div>

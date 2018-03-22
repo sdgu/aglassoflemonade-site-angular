@@ -31,6 +31,7 @@ import { MusingsComponent } from './main/musings/musings.component';
 import { LoginComponent } from './login/login.component';
 import { TestComponent } from './test/test.component';
 
+import { PracticePloverComponent } from "./practiceplover/practiceplover.component"
 
 import { SafeHtmlPipe } from "./safe-html.pipe";
 
@@ -46,6 +47,8 @@ import { AuthService } from "./auth.service";
 import { AuthGuardService } from "./auth-guard.service";
 
 import { TestService } from "./test.service";
+
+
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -67,6 +70,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     SafeHtmlPipe,
     FocusDirective,
     MusingsComponent,
+    PracticePloverComponent,
 
     FfxivHomeComponent,
     FfxivTestComponent,
@@ -85,7 +89,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HttpModule,
     RouterModule,
     AppRoutingModule,
-    ColorPickerModule
+    ColorPickerModule,
+
   ],
   providers: [
     {

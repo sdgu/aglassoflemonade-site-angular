@@ -5,6 +5,7 @@ import { HomeComponent } from "./main/home/home.component";
 // import { AboutComponent } from "./about/about.component";
 // import { GpComponent } from "./gp/gp.component";
 // import { MusingsComponent } from "./musings/musings.component";
+import { PracticePloverComponent } from "./practiceplover/practiceplover.component"
 
 import { MainComponent } from "./layouts/main.component";
 import { FfxivComponent } from "./layouts/ffxiv.component";
@@ -27,6 +28,8 @@ const routes: Routes = [
   { path: "404", component: NotFoundComponent },
   { path: "login", component: LoginComponent },
   { path: "test", component: TestComponent, canActivate: [AuthGuardService]},
+
+  { path: "practiceplover", component: PracticePloverComponent },
 
   { path: "", component: MainComponent, children: MAIN_ROUTES },
   { path: "ffxiv", component: FfxivComponent, children: FFXIV_ROUTES },
