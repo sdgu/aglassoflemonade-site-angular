@@ -29,4 +29,13 @@
 	font-size: 20pt;
 }
 
+h1
+{
+	color: #ff811a;
+	border-bottom: 3px dotted #509B9A;
+}
 
+#spchar
+{
+	color: #509B9A;
+}
