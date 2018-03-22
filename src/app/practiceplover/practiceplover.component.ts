@@ -124,7 +124,7 @@ export class PracticePloverComponent implements OnInit {
   onKeyUp(event: any)
   {
     
-    if (this.typedWord === this.testWords[0])
+    if (this.typedWord.replace(/ /g, "") === this.testWords[0])
     {
       this.theWord = this.typedWord;
       this.testWords.shift();
